@@ -109,10 +109,16 @@ jobs:
           set -euo pipefail
 
           # The published repository is where the BaseApp is, and an application
-          # built on it needs it installed.
-          flatpak remote-add --user --if-not-exists bintana "$PWD/published"
-          flatpak install --user -y --noninteractive bintana \
-              io.github.getbintana.BaseApp//0.1 || true
+          # built on it needs it installed. The repository is **unsigned** until
+          # there is a project key, which is what `--no-gpg-verify` says; and on
+          # the very first run it is empty, with no summary to read -- adding
+          # the remote then fails, so it is only done once there is one.
+          if [ -f published/summary ]; then
+              flatpak remote-add --user --if-not-exists --no-gpg-verify \
+                  bintana "$PWD/published"
+              flatpak install --user -y --noninteractive bintana \
+                  io.github.getbintana.BaseApp//0.1 || true
+          fi
 
           # An absolute path: the build script moves to the source checkout,
           # where `published` means something else.
