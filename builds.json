@@ -1,4 +1,19 @@
 {
   "commit": "5792e554ca4e08bd4bd55d8ef65d751534793aa4",
-  "tag": "v0.1.0"
+  "tag": "v0.1.0",
+  "apps": {
+    "hello": {
+      "repo": "https://github.com/getbintana/bintana.git",
+      "commit": "c138b007e25117990e3fddf7d54263faca6dc882"
+    },
+    "ide": {
+      "repo": "https://github.com/getbintana/bintana.git",
+      "commit": "c138b007e25117990e3fddf7d54263faca6dc882"
+    },
+    "project": {
+      "repo": "https://github.com/getbintana/bintana-project.git",
+      "commit": "c04aa5ba2c02d1193b6ff9f8148409c84a8e9392"
+    }
+  },
+  "base": "c138b007e25117990e3fddf7d54263faca6dc882"
 }
